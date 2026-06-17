@@ -15,13 +15,13 @@ public class c_zaWena {
                 });
             });
 
-            config.routes.get("/sign_up",ctx ->{
-                String business_name = ctx.formParam("name");
+            config.routes.post("/sign_up",ctx ->{
+                String business_name = ctx.formParam("business_name");
                 String service_type = ctx.formParam("service");
                 String client_name = ctx.formParam("clientName");
                 Integer amount =  Integer.parseInt(   ctx.formParam("amount"));
 
-                AddBusiness new_business = new AddBusiness(business_name,service_type, client_name);
+                AddBusiness new_business = new AddBusiness(business_name,service_type, client_name,amount);
                 try{
                     new_business.register_();
                     ctx.json(Map.of("status", "OK"));

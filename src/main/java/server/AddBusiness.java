@@ -6,12 +6,14 @@ public class AddBusiness {
     private String Business_name;
     private String service_type;
     private String client_name;
+    private Integer amount;
 
 
-    public AddBusiness(String businessName, String service_type, String clientName){
+    public AddBusiness(String businessName, String service_type, String clientName, Integer amount){
         this.Business_name = businessName;
         this.service_type = service_type;
         this.client_name = clientName;
+        this.amount = amount;
 
     }
 
@@ -27,7 +29,7 @@ public class AddBusiness {
             pstm.setString(1, this.Business_name);
             pstm.setString(2, this.service_type);
             pstm.setString(3, this.client_name);
-            pstm.setInt(4,200);
+            pstm.setInt(4,this.amount);
 
             pstm.executeUpdate();
 
@@ -40,7 +42,7 @@ public class AddBusiness {
 
      public static void main(String[] args) throws SQLException {
 
-        AddBusiness test_business = new AddBusiness("MKhulex Rental","property","Mdu");
+        AddBusiness test_business = new AddBusiness("MKhulex Rental","property","thule",700);
 
 
 
