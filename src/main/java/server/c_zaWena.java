@@ -19,9 +19,10 @@ public class c_zaWena {
                 String business_name = ctx.formParam("business_name");
                 String service_type = ctx.formParam("service");
                 String client_name = ctx.formParam("clientName");
+                String client_ID = ctx.formParam("ID");
                 Integer amount =  Integer.parseInt(   ctx.formParam("amount"));
 
-                AddBusiness new_business = new AddBusiness(business_name,service_type, client_name,amount);
+                AddBusiness new_business = new AddBusiness(business_name,service_type, client_name,amount, client_ID);
                 try{
                     new_business.register_();
                     ctx.json(Map.of("status", "OK"));

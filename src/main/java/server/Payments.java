@@ -1,5 +1,6 @@
 package server;
 
 public class Payments {
-    private String d;
+    private String client_ID;
+    private String client_amount;
 }
