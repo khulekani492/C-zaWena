@@ -48,8 +48,5 @@ public class Client {
      return null;
     }
 
-    public static void main(String[]args) throws SQLException {
-        Client client = new Client("Usimamane");
-        System.out.println( client.clientIdValidate() );
-    };
+
 }

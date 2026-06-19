@@ -31,7 +31,17 @@ public class c_zaWena {
                     throw new RuntimeException(e);
                 }
 
-//                ctx.render("templates/index.html");
+            });
+            config.routes.post("/confirm_client",ctx ->{
+               String client_id = ctx.formParam("ID");
+               String business_name =   ctx.formParam("business");;
+               Client confirm_client = new Client(business_name);
+               if(client_id.equals(confirm_client)){
+                   ctx.json(Map.of("Status","OK"));
+               } else {
+                   ctx.json(Map.of("Status","FAILURE"));
+               }
+
             });
             config.routes.get("/login", ctx ->{
                 ctx.render("templates/login.html");
