@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class c_zaWena {
 
-    void main() {
+    public static void main(String[] args)  {
         Javalin.create(config -> {
             config.bundledPlugins.enableCors(cors -> {
                 cors.addRule(it -> {
