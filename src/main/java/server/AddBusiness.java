@@ -20,6 +20,8 @@ public class AddBusiness {
 
     }
 
+
+
     public String register_() throws SQLException {
         //jdbc connection
         String jdbcUrl = "jdbc:postgresql://aws-0-eu-west-1.pooler.supabase.com:6543/postgres?user=postgres.dklypwwqkhgnqqlzpjrs&password=!4PNfgC-_U6ZjL5";

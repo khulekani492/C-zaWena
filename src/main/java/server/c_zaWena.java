@@ -33,10 +33,12 @@ public class c_zaWena {
 
             });
             config.routes.post("/confirm_client",ctx ->{
-               String client_id = ctx.formParam("ID");
+               String client_id = ctx.formParam("ID_Client");
+
                String business_name =   ctx.formParam("business");;
                Client confirm_client = new Client(business_name);
-               if(client_id.equals(confirm_client)){
+               String client_exist = confirm_client.clientIdValidate();
+               if(client_id.equals(client_exist)){
                    ctx.json(Map.of("Status","OK"));
                } else {
                    ctx.json(Map.of("Status","FAILURE"));
