@@ -14,6 +14,19 @@ public class c_zaWena {
                     it.anyHost();
                 });
             });
+            config.routes.get("/dashboard",ctx -> {
+                        System.out.println("Called by FRONTEND");
+                        ctx.status(200);
+                    }
+
+            );
+
+            config.routes.post("/login", ctx ->{
+                String business_name = ctx.formParam("bs_name");
+                String password = ctx.formParam("bs_password");
+                assert business_name != null;
+                ctx.json(Map.of("buisness_name",business_name));
+            });
 
             config.routes.post("/sign_up",ctx ->{
                 String business_name = ctx.formParam("business_name");
@@ -21,7 +34,6 @@ public class c_zaWena {
                 String client_name = ctx.formParam("clientName");
                 String client_ID = ctx.formParam("ID");
                 Integer amount =  Integer.parseInt(   ctx.formParam("amount"));
-
                 AddBusiness new_business = new AddBusiness(business_name,service_type, client_name,amount, client_ID);
                 try{
                     new_business.register_();
@@ -30,7 +42,6 @@ public class c_zaWena {
                     ctx.json(Map.of("status", "Failed" ));
                     throw new RuntimeException(e);
                 }
-
             });
             config.routes.post("/confirm_client",ctx ->{
                String client_id = ctx.formParam("ID_Client");
@@ -45,9 +56,8 @@ public class c_zaWena {
                }
 
             });
-            config.routes.get("/login", ctx ->{
-                ctx.render("templates/login.html");
-            });
+
+
         }).start(5050);
     }
 
