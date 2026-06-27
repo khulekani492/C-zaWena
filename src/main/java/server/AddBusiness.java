@@ -19,6 +19,10 @@ public class AddBusiness {
 
 
     }
+    public AddBusiness(String businessName) {
+        this.Business_name = businessName;
+
+    }
 
 
 
@@ -43,5 +47,34 @@ public class AddBusiness {
         }
         return "Success";
     }
+
+    public  Integer businessID() throws SQLException {
+        String jdbcUrl = "jdbc:postgresql://aws-0-eu-west-1.pooler.supabase.com:6543/postgres?user=postgres.dklypwwqkhgnqqlzpjrs&password=!4PNfgC-_U6ZjL5";
+        String sql = """
+                 SELECT user_id FROM m_s_s_clients WHERE business_name = ?
+                \s""";
+        Connection conn = DriverManager.getConnection(jdbcUrl);
+        try {
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1,this.Business_name);
+            ResultSet execute  =  pstm.executeQuery();
+
+            if(execute.next() ){
+                return execute.getInt("user_id");
+            }
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    public static void main(String[] args) throws SQLException {
+    AddBusiness test_userId = new AddBusiness("Usimamane");
+
+        System.out.println(test_userId.businessID());
+}
 
 }

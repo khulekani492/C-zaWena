@@ -25,7 +25,13 @@ public class c_zaWena {
                 String business_name = ctx.formParam("bs_name");
                 String password = ctx.formParam("bs_password");
                 assert business_name != null;
-                ctx.json(Map.of("buisness_name",business_name));
+                AddBusiness verify_userID = new AddBusiness(business_name);
+                //Json object Online payments
+                Integer business_id =  verify_userID.businessID();
+
+                Client business_clients = new Client(business_id);
+                System.out.println("Business Client " + business_clients.getbusinessClients());
+                ctx.json(Map.of("business_clients",business_clients.getbusinessClients()));
             });
 
             config.routes.post("/sign_up",ctx ->{
