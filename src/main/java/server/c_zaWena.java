@@ -35,19 +35,15 @@ public class c_zaWena {
             });
 
             config.routes.post("/sign_up",ctx ->{
+                System.out.println("Incoming new data :");
                 String business_name = ctx.formParam("business_name");
                 String service_type = ctx.formParam("service");
                 String client_name = ctx.formParam("clientName");
                 String client_ID = ctx.formParam("ID");
-                Integer amount =  Integer.parseInt(   ctx.formParam("amount"));
-                AddBusiness new_business = new AddBusiness(business_name,service_type, client_name,amount, client_ID);
-                try{
-                    new_business.register_();
-                    ctx.json(Map.of("status", "OK"));
-                } catch (SQLException e) {
-                    ctx.json(Map.of("status", "Failed" ));
-                    throw new RuntimeException(e);
-                }
+                System.out.println("business name " + business_name);
+                System.out.println("client_name " + service_type);
+//                AddBusiness new_business = new AddBusiness(business_name,service_type, client_name,amount, client_ID);
+
             });
             config.routes.post("/confirm_client",ctx ->{
                String client_id = ctx.formParam("ID_Client");
