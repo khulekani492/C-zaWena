@@ -1,0 +1,12 @@
+# Driver
+hibernate.connection.driver_class=org.postgresql.Driver
+
+# Connection URL (Requires SSL; prepareThreshold=0 needed for port 6543 PgBouncer)
+hibernate.connection.url=jdbc:postgresql://aws-0-eu-west-1.pooler.supabase.com:6543/postgres?sslmode=require&prepareThreshold=0
+
+# Credentials
+hibernate.connection.username=postgres.dklypwwqkhgnqqlzpjrs
+hibernate.connection.password=!4PNfgC-_U6ZjL5
+
+# Dialect
+hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
